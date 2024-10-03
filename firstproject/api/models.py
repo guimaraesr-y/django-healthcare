@@ -22,23 +22,20 @@ class Collaborator(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
+    current_patient = models.ForeignKey(Patient, on_delete=models.SET_NULL, null=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 
 class Tasks(models.Model):
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     description = models.TextField()
     done = models.BooleanField(default=False)
     deadline = models.DateField()
-    who_finished = models.ForeignKey(
-        Collaborator, on_delete=models.SET_NULL, null=True
-    )
+    who_finished = models.ForeignKey(Collaborator, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
 class PatientAddress(models.Model):
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     address = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
