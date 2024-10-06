@@ -1,3 +1,6 @@
+*.pyc
+__pycache__/
+
 .venv
 
 firstproject/db.sqlite3

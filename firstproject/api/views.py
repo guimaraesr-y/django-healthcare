@@ -1,7 +1,2 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-
-# Create your views here.
-
-def index(request):
-    return HttpResponse("Hello, World!")
+from .viewsets.collaborator_viewset import CollaboratorViewSet
+from .viewsets.patient_viewset import PatientViewSet
