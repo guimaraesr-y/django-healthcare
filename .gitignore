@@ -4,3 +4,4 @@ __pycache__/
 .venv
 
 firstproject/db.sqlite3
+firstproject/*.sqlite3
