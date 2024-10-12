@@ -28,7 +28,7 @@ class TaskViewSet(ModelViewSet):
         serializer = self.get_serializer(tasks, many=True)
         return Response(serializer.data)
 
-    def retrieve(self, request, c_pk):
+    def retrieve(self, request, patient_pk, pk):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
