@@ -7,7 +7,7 @@ No sistema em desenvolvimento, há duas categorias principais de usuários: **ge
 
 Cada **paciente** possui informações como nome, idade, gênero, e-mail, telefone, e pelo menos um **endereço** cadastrado, que é utilizado para saber onde as atividades devem ser realizadas, quando aplicável. Um paciente pode ter várias tarefas associadas a ele, as quais são atribuídas pelo gestor aos colaboradores.
 
-As **tarefas** são descritas pelo gestor e estão sempre relacionadas a um paciente. Após a atribuição, elas são designadas a um colaborador específico. Quando o colaborador finaliza a tarefa, ele marca a atividade como concluída no sistema. 
+As **tarefas** são descritas pelo gestor e estão sempre relacionadas a um paciente. Após a atribuição, qualquer colaborador pode realizá-la, contanto que esteja relacionado ao paciente. Quando o colaborador finaliza a tarefa, ele marca a atividade como concluída no sistema. 
 
 O **endereço do paciente** é gerido pelo gestor e pode ser atualizado conforme necessário. Um paciente pode ter mais de um endereço registrado ao longo do tempo, sendo importante manter o endereço atual para facilitar o acompanhamento e a execução das tarefas pelos colaboradores.
 

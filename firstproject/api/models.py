@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Patient(models.Model):
     name = models.CharField(max_length=100)
@@ -27,7 +25,7 @@ class Collaborator(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-class Tasks(models.Model):
+class Task(models.Model):
     description = models.TextField()
     done = models.BooleanField(default=False)
     deadline = models.DateField()
