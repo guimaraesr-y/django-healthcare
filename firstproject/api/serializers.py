@@ -1,5 +1,7 @@
-from datetime import date
+from datetime import datetime, timezone
 from rest_framework import serializers
+
+from .exceptions.conflitct_error import ConflictError
 from .models import Collaborator, Patient, Task
 
 
@@ -30,6 +32,13 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def validate_deadline(self, value):
         print("Validating deadline...")
-        if date.today() > value:
+        # TODO: test this timezone logic
+        if datetime.now(timezone.utc) > value:
             raise serializers.ValidationError("Enter a valid date.")
+        return value
+    
+    def validate_done(self, value):
+        if self.instance.done:
+            raise ConflictError("Task already finished.")
+        
         return value

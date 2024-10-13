@@ -27,8 +27,8 @@ class Collaborator(models.Model):
 
 class Task(models.Model):
     description = models.TextField()
-    done = models.BooleanField(default=False)
-    deadline = models.DateField()
+    done = models.DateTimeField(default=None)
+    deadline = models.DateTimeField()
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE, default=None)
     who_finished = models.ForeignKey(Collaborator, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
