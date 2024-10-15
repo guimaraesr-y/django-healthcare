@@ -35,7 +35,7 @@ class TaskSerializer(serializers.ModelSerializer):
         if instance.done:
             raise UnauthorizedError("Task already finished, cannot update.")
         
-        super().update(instance, validated_data)
+        return super().update(instance, validated_data)
             
 
     def validate_deadline(self, value):
