@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 from rest_framework import serializers
 
+from .exceptions.unauthorized_error import UnauthorizedError
 from .exceptions.conflitct_error import ConflictError
 from .models import Collaborator, Patient, Task
 
@@ -29,6 +30,13 @@ class TaskSerializer(serializers.ModelSerializer):
             deadline=validated_data["deadline"],
             patient=validated_data["patient"],
         )
+    
+    def update(self, instance, validated_data):
+        if instance.done:
+            raise UnauthorizedError("Task already finished, cannot update.")
+        
+        super().update(instance, validated_data)
+            
 
     def validate_deadline(self, value):
         print("Validating deadline...")

@@ -37,8 +37,21 @@ class TaskViewSet(ModelViewSet):
         return Response(serializer.data)
 
     def update(self, request, patient_pk, pk):
-        # TODO: implement update task info (obs: should not update who and when finished)
-        pass
+        data = {}
+        
+        # allow to update only description and deadline
+        if request.data.get("description") is not None:
+            data["description"] = request.data.get("description")
+        
+        if request.data.get("deadline") is not None:
+            data["deadline"] = request.data.get("deadline")
+        
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        
+        self.perform_update(serializer)
+        return Response(serializer.data)
     
     @action(methods=["post"], detail=True)
     def finish(self, request, patient_pk, pk):
